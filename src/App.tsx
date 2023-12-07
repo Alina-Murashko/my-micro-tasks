@@ -1,7 +1,10 @@
 
 import './App.css';
-import React, {useState} from 'react';
+import React, {MouseEvent, useState} from 'react';
 import {NewComponent} from "./components/NewComponent";
+import { Education_Button } from './components/Education_Button';
+import { Button } from './components/Button';
+
 
 
 function App() {
@@ -36,9 +39,31 @@ function App() {
       {manufacturer: 'Mersedes', model: 'MLS'},
       {manufacturer: 'Audi', model: 'Q7'}
   ]
-    return (
-        <NewComponent students={students} topCars={topCars}/>
-    );
+
+   /* const myFirstSubscriber = (event:MouseEvent<HTMLButtonElement>) => {
+      console.log("hello, my name Alina")
+    }
+
+    const myTwoSubscriber = (event:MouseEvent<HTMLButtonElement>) => {
+      console.log("hello, my name Valera")
+    }*/
+
+    const ButtonOneFoo = (name: string, age: number) => {
+      console.log(`hello, my name ${name}, age ${age}`)
+    }
+
+    const ButtonTwoFoo = (name: string) => {
+      console.log(`bye, ${name}`) 
+    }
+    
+    return ( 
+        <div>
+          <Button title={'My chanel 1'} callback={() => {ButtonOneFoo("Button_1", 23)}}/>
+          <Button title={'My chanel 2'} callback={() => {ButtonOneFoo("Button_2", 11)}}/>
+          <Button title={'My chanel 3'} callback={() => {ButtonTwoFoo("Input")}}/>
+        </div>
+       
+    )
 }
 
 export default App;
