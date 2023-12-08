@@ -4,11 +4,34 @@ import React, {MouseEvent, useState} from 'react';
 import {NewComponent} from "./components/NewComponent";
 import { Education_Button } from './components/Education_Button';
 import { Button } from './components/Button';
-
+import { HookUseState } from './components/HookUseState';
 
 
 function App() {
-    const [students, setStudents] = useState([
+
+ 
+    
+    return ( 
+        <div className='App'>
+          <HookUseState/>
+        </div>
+       
+    )
+}
+
+export default App;
+
+
+
+
+
+
+
+
+/* 
+
+// 1 неделя
+const [students, setStudents] = useState([
             {id: 1, name: "James", age: 8},
             {id: 2, name: "Robert", age: 18},
             {id: 3, name: "John", age: 28},
@@ -46,7 +69,7 @@ function App() {
 
     const myTwoSubscriber = (event:MouseEvent<HTMLButtonElement>) => {
       console.log("hello, my name Valera")
-    }*/
+    }
 
     const ButtonOneFoo = (name: string, age: number) => {
       console.log(`hello, my name ${name}, age ${age}`)
@@ -55,16 +78,5 @@ function App() {
     const ButtonTwoFoo = (name: string) => {
       console.log(`bye, ${name}`) 
     }
-    
-    return ( 
-        <div>
-          <Button title={'My chanel 1'} callback={() => {ButtonOneFoo("Button_1", 23)}}/>
-          <Button title={'My chanel 2'} callback={() => {ButtonOneFoo("Button_2", 11)}}/>
-          <Button title={'My chanel 3'} callback={() => {ButtonTwoFoo("Input")}}/>
-        </div>
-       
-    )
-}
-
-export default App;
+  */
 
