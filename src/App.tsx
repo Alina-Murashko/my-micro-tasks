@@ -5,15 +5,33 @@ import {NewComponent} from "./components/NewComponent";
 import { Education_Button } from './components/Education_Button';
 import { Button } from './components/Button';
 import { HookUseState } from './components/HookUseState';
+import { CounterMoney } from './components/CounterMoney';
+import { log } from 'console';
 
 
 function App() {
 
- 
-    
+  const [money, setMoney] = useState([
+    {banknote: "dollar", nominal: 100, number: "a123456789"},
+    {banknote: "dollar", nominal: 50, number: "b123456789"},
+    {banknote: "ruble", nominal: 100, number: "c123456789"},
+    {banknote: "dollar", nominal: 100, number: "d123456789"},
+    {banknote: "dollar", nominal: 50, number: "e123456789"},
+    {banknote: "ruble", nominal: 100, number: "f123456789"},
+    {banknote: "dollar", nominal: 50, number: "j123456789"},
+    {banknote: "ruble", nominal: 50, number: "h123456789"}
+])
+
+const [nameButtonFilter, setNameButtonFilter] = useState("All")
+
+
     return ( 
         <div className='App'>
-          <HookUseState/>
+          <h3>Current curency {nameButtonFilter}</h3>
+          <CounterMoney allMoney={money} banknote={nameButtonFilter} />
+          <Button title='dollar' callback={ setNameButtonFilter}/>
+          <Button title='ruble' callback={setNameButtonFilter}/>
+          <Button title='all' callback={ setNameButtonFilter}/>
         </div>
        
     )
