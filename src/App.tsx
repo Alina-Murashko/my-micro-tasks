@@ -2,6 +2,8 @@
 import './App.css';
 import React, {useState} from 'react';
 import { FullInput } from './components/FullInput';
+import { Input } from './components/Input';
+import { Button } from './components/Button';
 
 
 function App() {
@@ -14,14 +16,26 @@ function App() {
       ]
   )
 
+  const [title, setTitle] = useState<string>('');
+
+  
+
   const addNewMessage = (valueInput : string) => {
     const newMessage = {message : valueInput};
-    setMessage([newMessage, ...message])
+    setMessage([newMessage, ...message]);
+    
   }
 
+  const callBackButtonHandler = () => {
+    addNewMessage(title);
+    setTitle('')
+  }
   return (
       <div className="App">
-        <FullInput addNewMessage={addNewMessage}/>
+       <div>
+          <Input title={title}  setTitle={setTitle} />
+          <Button title='+' callback={callBackButtonHandler}/>
+       </div>
         {message.map((el, index) => {
           return (
               <div key={index}>{el.message}</div>
@@ -36,13 +50,17 @@ function App() {
 
 export default App;
 
-/*
+/* //1 способ
+ <FullInput addNewMessage={addNewMessage}/>
 
+  const addNewMessage = (valueInput : string) => {
+    const newMessage = {message : valueInput};
+    setMessage([newMessage, ...message])
+  }
 
 */
 
 /*
-
 // 1 неделя
 
  const [money, setMoney] = useState([

@@ -1,13 +1,13 @@
 type ButtonPropType = {
     title : string
-    callback: (currencyName: string) => void
+    callback: () => void
 }
 
 
 export const Button = (props: ButtonPropType) => {
 
     const onClickHundler = () => {
-       props.callback(props.title)
+       props.callback()
       }
 
     return (
