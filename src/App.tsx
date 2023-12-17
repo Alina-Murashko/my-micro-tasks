@@ -1,17 +1,51 @@
 
 import './App.css';
-import React, {MouseEvent, useState} from 'react';
-import {NewComponent} from "./components/NewComponent";
-import { Education_Button } from './components/Education_Button';
-import { Button } from './components/Button';
-import { HookUseState } from './components/HookUseState';
-import { CounterMoney } from './components/CounterMoney';
-import { log } from 'console';
+import React, {useState} from 'react';
+import { FullInput } from './components/FullInput';
 
 
 function App() {
+  const [message, setMessage] = useState([
+        {message: 'message1'},
+        {message: 'message2'},
+        {message: 'message3'},
+        {message: 'message4'},
+        {message: 'message5'}
+      ]
+  )
 
-  const [money, setMoney] = useState([
+  const addNewMessage = (valueInput : string) => {
+    const newMessage = {message : valueInput};
+    setMessage([newMessage, ...message])
+  }
+
+  return (
+      <div className="App">
+        <FullInput addNewMessage={addNewMessage}/>
+        {message.map((el, index) => {
+          return (
+              <div key={index}>{el.message}</div>
+          )
+        })}
+      </div>
+  );
+}
+
+
+
+
+export default App;
+
+/*
+
+
+*/
+
+/*
+
+// 1 неделя
+
+ const [money, setMoney] = useState([
     {banknote: "dollar", nominal: 100, number: "a123456789"},
     {banknote: "dollar", nominal: 50, number: "b123456789"},
     {banknote: "ruble", nominal: 100, number: "c123456789"},
@@ -25,25 +59,14 @@ function App() {
 const [nameButtonFilter, setNameButtonFilter] = useState("All")
 
 
-    return ( 
-        <div className='App'>
-          <h3>Current curency {nameButtonFilter}</h3>
+ <h3>Current curency {nameButtonFilter}</h3>
           <CounterMoney allMoney={money} banknote={nameButtonFilter} />
           <Button title='dollar' callback={ setNameButtonFilter}/>
           <Button title='ruble' callback={setNameButtonFilter}/>
           <Button title='all' callback={ setNameButtonFilter}/>
-        </div>
-       
-    )
-}
-
-export default App;
 
 
-
-
-
-
+*/ 
 
 
 /* 
